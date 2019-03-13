@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" id="cordova-plugin-vrplayer" version="2.0.0">
+
+    <name>VR View</name>
+
+    <js-module src="www/vrview.js" name="vrview">
+        <clobbers target="VrPlayer" />
+    </js-module>
+
+    <platform name="android">
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="VrPlayer">
+                <param name="android-package" value="com.thevrplugin.cordovapluginvrplayer.VrPlayer"/>
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            		
+
+<activity
+    android:name="com.thevrplugin.cordovapluginvrplayer.VideoActivity"
+    android:icon="@drawable/icon"
+    android:launchMode="singleTask"
+    android:screenOrientation="portrait"
+    android:theme="@style/VrActivityTheme">
+</activity>
+
+<activity
+    android:name="com.thevrplugin.cordovapluginvrplayer.VrVideoActivity"
+    android:configChanges="orientation|keyboardHidden|screenSize|uiMode|navigation"
+    android:enableVrMode="@string/gvr_vr_mode_component"
+    android:launchMode="singleTask"
+    android:resizeableActivity="false"
+    android:screenOrientation="landscape"
+    android:theme="@style/VrActivityTheme">
+</activity>
+		
+        </config-file>
+
+        <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
+            <application android:largeHeap="true" />
+        </edit-config>
+
+        <edit-config file="AndroidManifest.xml" target="/manifest" mode="merge">
+            <manifest xmlns:tools="http://schemas.android.com/tools" />
+        </edit-config>
+
+        <source-file src="src/android/java/com/thevrplugin/cordovapluginvrplayer/VrPlayer.java" target-dir="src/com/thevrplugin/cordovapluginvrplayer/"/>
+        <source-file src="src/android/java/com/thevrplugin/cordovapluginvrplayer/MediaLoader.java" target-dir="src/com/thevrplugin/cordovapluginvrplayer/"/>
+        <source-file src="src/android/java/com/thevrplugin/cordovapluginvrplayer/MonoscopicView.java" target-dir="src/com/thevrplugin/cordovapluginvrplayer/"/>
+        <source-file src="src/android/java/com/thevrplugin/cordovapluginvrplayer/VideoActivity.java" target-dir="src/com/thevrplugin/cordovapluginvrplayer/"/>
+        <source-file src="src/android/java/com/thevrplugin/cordovapluginvrplayer/VideoUiView.java" target-dir="src/com/thevrplugin/cordovapluginvrplayer/"/>
+        <source-file src="src/android/java/com/thevrplugin/cordovapluginvrplayer/VrVideoActivity.java" target-dir="src/com/thevrplugin/cordovapluginvrplayer/"/>
+
+        <source-file src="src/android/java/com/thevrplugin/cordovapluginvrplayer/rendering/SceneRenderer.java" target-dir="src/com/thevrplugin/cordovapluginvrplayer/rendering/" />
+        <source-file src="src/android/java/com/thevrplugin/cordovapluginvrplayer/rendering/Mesh.java" target-dir="src/com/thevrplugin/cordovapluginvrplayer/rendering/" />
+        <source-file src="src/android/java/com/thevrplugin/cordovapluginvrplayer/rendering/CanvasQuad.java" target-dir="src/com/thevrplugin/cordovapluginvrplayer/rendering/" />
+        <source-file src="src/android/java/com/thevrplugin/cordovapluginvrplayer/rendering/Utils.java" target-dir="src/com/thevrplugin/cordovapluginvrplayer/rendering/" />
+
+        <resource-file src="src/android/res/layout/video_activity.xml" target="res/layout/video_activity.xml" />
+        <resource-file src="src/android/res/layout/video_ui.xml" target="res/layout/video_ui.xml" />
+        
+        <resource-file src="src/android/res/drawable/vr_icon_background.png" target="res/drawable/vr_icon_background.png" />
+        <resource-file src="src/android/res/drawable/enter_vr.png" target="res/drawable/enter_vr.png" />
+        <resource-file src="src/android/res/drawable/pause_button.png" target="res/drawable/pause_button.png" />
+        <resource-file src="src/android/res/drawable/play_button.png" target="res/drawable/play_button.png" />
+        <resource-file src="src/android/res/drawable/icon.png" target="res/drawable/icon.png" />
+
+        <framework src="src/android/extra.gradle" custom="true" type="gradleReference" />
+        <framework src="com.android.support:appcompat-v7:26.1.0" />
+        <framework src="com.google.vr:sdk-base:1.190.0" />
+
+    </platform>
+
+</plugin>

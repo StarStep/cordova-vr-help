@@ -1,0 +1,20 @@
+{
+  "name": "cordova-plugin-vrplayer",
+  "version": "0.0.1",
+  "description": "Cordova plugin VR Player",
+  "cordova": {
+    "id": "cordova-plugin-vrplayer",
+    "platforms": [
+      "android",
+      "ios",
+      "browser"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "author": "",
+  "license": "UNLICENSED"
+}
