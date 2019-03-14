@@ -245,7 +245,21 @@ public class VrVideoActivity extends GvrActivity {
     }
 
     public void myPause() {
-        this.onPause();
+        try {
+            mediaLoader.pause();
+        } catch (Exception e) {
+            Log.d(TAG, "Error while trying mediaLoader.pause();");
+        };
+        try {
+            mediaLoader.mediaPlayer.pause();
+        } catch (Exception e) {
+            Log.d(TAG, "Error while trying mediaLoader.mediaPlayer.pause();");
+        };
+        try {
+            (new MediaLoader(this)).mediaPlayer.pause();
+        } catch (Exception e) {
+            Log.d(TAG, "Error while trying mediaLoader.pause();");
+        };
     }
 
 }
